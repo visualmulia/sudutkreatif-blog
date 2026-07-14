@@ -44,7 +44,7 @@ export default async function handler(req, res) {
               token: token,
               provider: "github"
             });
-            window.opener.postMessage(message, window.location.origin);
+            window.opener.postMessage(message, "*");
           </script>
         </body>
       </html>
