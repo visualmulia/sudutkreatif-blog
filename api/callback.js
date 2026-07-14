@@ -39,12 +39,22 @@ export default async function handler(req, res) {
         <body>
           <p>Autentikasi berhasil. Menghubungkan ke CMS...</p>
           <script>
-            const token = "${token}";
-            const message = "authorization:github:success:" + JSON.stringify({
-              token: token,
-              provider: "github"
-            });
-            window.opener.postMessage(message, "*");
+            (function() {
+              const token = "${token}";
+              const message = "authorization:github:success:" + JSON.stringify({
+                token: token,
+                provider: "github"
+              });
+              
+              if (window.opener) {
+                // Send the token back to the CMS window
+                window.opener.postMessage(message, "*");
+                // Close the popup window
+                window.close();
+              } else {
+                document.body.innerHTML = "<p>Error: Tidak ada jendela utama (opener) yang terdeteksi. Silakan coba masuk kembali.</p>";
+              }
+            })();
           </script>
         </body>
       </html>
