@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager - SudutKreatif</title>
+    <!-- Explicit absolute path for the config file to prevent trailing slash issues -->
+    <link href="/admin/config.yml" type="yaml" rel="cms-config-url" />
   </head>
   <body>
-    <!-- Include Decap CMS script inside body so document.body exists when it runs -->
+    <!-- Include Decap CMS script -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
