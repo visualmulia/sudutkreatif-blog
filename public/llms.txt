@@ -1,0 +1,10 @@
+# SudutKreatif
+Inspirasi ruang kerja minimalis modern dan panduan home office setup untuk menunjang produktivitas Anda.
+
+## Core Pages
+- [Beranda](https://www.sudutkreatif.web.id/) - Halaman utama penataan ruang kerja.
+- [Tentang Kami](https://www.sudutkreatif.web.id/#about) - Informasi tentang redaksi SudutKreatif.
+- [Kontak](https://www.sudutkreatif.web.id/contact) - Hubungi kami.
+- [Disclaimer](https://www.sudutkreatif.web.id/disclaimer) - Sangkalan hukum.
+- [Privacy Policy](https://www.sudutkreatif.web.id/privacy) - Kebijakan privasi.
+- [Terms of Service](https://www.sudutkreatif.web.id/terms) - Syarat & ketentuan.

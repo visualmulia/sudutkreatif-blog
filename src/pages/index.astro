@@ -73,6 +73,26 @@ const formatDate = (dateStr: string | Date) => {
 			</div>
 		</div>
 	</section>
+
+	<!-- JSON-LD Site Schema -->
+	<script type="application/ld+json" is:inline>
+	  {
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": "SudutKreatif",
+		"url": "https://www.sudutkreatif.web.id",
+		"description": "Inspirasi ruang kerja minimalis modern dan panduan home office setup untuk menunjang produktivitas Anda.",
+		"publisher": {
+		  "@type": "Organization",
+		  "name": "SudutKreatif",
+		  "url": "https://www.sudutkreatif.web.id",
+		  "logo": {
+			"@type": "ImageObject",
+			"url": "https://www.sudutkreatif.web.id/favicon.svg"
+		  }
+		}
+	  }
+	</script>
 </Layout>
 
 <style>
