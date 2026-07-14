@@ -41,23 +41,31 @@ export default async function handler(req, res) {
           <script>
             (function() {
               const token = "${token}";
-              const message = "authorization:github:success:" + JSON.stringify({
+              
+              // Format 1: String payload (Netlify standard)
+              const strMessage = "authorization:github:success:" + JSON.stringify({
                 token: token,
                 provider: "github"
               });
               
-              function receiveMessage(e) {
-                // If Decap CMS responds with 'ready', send the success payload
-                if (e.data === "authorization:github:ready") {
-                  window.opener.postMessage(message, e.origin);
-                  window.removeEventListener("message", receiveMessage, false);
+              // Format 2: Object payload (Decap standard)
+              const objMessage = {
+                provider: "github",
+                status: "success",
+                value: {
+                  token: token
                 }
-              }
+              };
               
               if (window.opener) {
-                window.addEventListener("message", receiveMessage, false);
-                // Step 1: Notify the opener that authorization is in progress
-                window.opener.postMessage("authorizing:github", "*");
+                // Send both formats to cover all Decap/Netlify CMS versions immediately
+                window.opener.postMessage(strMessage, "*");
+                window.opener.postMessage(objMessage, "*");
+                
+                // Auto-close the popup after a brief timeout to guarantee message delivery
+                setTimeout(function() {
+                  window.close();
+                }, 200);
               } else {
                 document.body.innerHTML = "<p>Error: Tidak ada jendela utama (opener) yang terdeteksi. Silakan coba masuk kembali.</p>";
               }
