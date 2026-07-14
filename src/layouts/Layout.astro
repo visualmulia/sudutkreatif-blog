@@ -34,7 +34,6 @@ const { title, description = "Inspirasi desain ruang kerja, home office setup, d
 				<nav class="nav">
 					<a href="/" class="nav-link">Home</a>
 					<a href="/#about" class="nav-link">Tentang</a>
-					<a href="/admin/" class="nav-link btn-cms">CMS Admin</a>
 				</nav>
 			</div>
 		</header>
@@ -54,7 +53,12 @@ const { title, description = "Inspirasi desain ruang kerja, home office setup, d
 				<div class="footer-divider"></div>
 				<div class="footer-bottom">
 					<p>&copy; {new Date().getFullYear()} SudutKreatif. All rights reserved.</p>
-					<p>Ternak Blog Project - Auto Publisher System</p>
+					<div class="footer-links">
+						<a href="/privacy" class="footer-link">Privacy Policy</a>
+						<a href="/terms" class="footer-link">Terms of Service</a>
+						<a href="/contact" class="footer-link">Kontak</a>
+						<a href="/disclaimer" class="footer-link">Disclaimer</a>
+					</div>
 				</div>
 			</div>
 		</footer>
@@ -106,17 +110,20 @@ const { title, description = "Inspirasi desain ruang kerja, home office setup, d
 		color: var(--text-primary);
 	}
 
-	.btn-cms {
-		border: 1px solid var(--accent);
-		color: var(--accent);
-		padding: 0.4rem 1rem;
-		border-radius: 4px;
-		font-size: 0.85rem;
+	.footer-links {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
 	}
 
-	.btn-cms:hover {
-		background-color: var(--accent);
-		color: #FFFFFF;
+	.footer-link {
+		color: var(--text-secondary);
+		transition: var(--transition);
+	}
+
+	.footer-link:hover {
+		color: var(--text-primary);
+		text-decoration: underline;
 	}
 
 	/* Footer Styles */

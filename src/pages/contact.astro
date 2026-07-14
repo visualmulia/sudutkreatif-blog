@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kontak Kami - SudutKreatif" description="Halaman Kontak Hubungi SudutKreatif.web.id">
+	<section class="static-page">
+		<div class="container static-container">
+			<h1>Kontak Kami</h1>
+			<p class="last-updated">Terakhir diperbarui: 14 Juli 2026</p>
+			
+			<p>Apakah Anda memiliki pertanyaan, saran, atau ingin berkolaborasi dengan SudutKreatif? Kami akan sangat senang mendengar dari Anda!</p>
+			<p>Anda dapat menghubungi tim redaksi kami melalui alamat email berikut:</p>
+			
+			<div class="contact-box">
+				<strong>Email Resmi:</strong>
+				<a href="mailto:admin@sudutkreatif.web.id">admin@sudutkreatif.web.id</a>
+			</div>
+			
+			<p>Kami biasanya membalas semua email masuk dalam waktu 24-48 jam kerja.</p>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.static-page {
+		padding: 6rem 0;
+	}
+	.static-container {
+		max-width: 800px;
+		font-family: var(--font-sans);
+		font-size: 1.1rem;
+		line-height: 1.8;
+		color: var(--text-primary);
+	}
+	h1 {
+		font-size: 2.75rem;
+		margin-bottom: 0.5rem;
+		font-weight: 800;
+		letter-spacing: -1px;
+	}
+	.last-updated {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		margin-bottom: 3rem;
+	}
+	p {
+		margin-bottom: 1.5rem;
+	}
+	.contact-box {
+		background-color: var(--accent-light);
+		border-left: 4px solid var(--accent);
+		padding: 1.5rem 2rem;
+		margin: 2rem 0;
+		border-radius: 0 8px 8px 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.contact-box a {
+		color: var(--accent);
+		font-weight: 600;
+		font-size: 1.2rem;
+	}
+	.contact-box a:hover {
+		color: var(--text-primary);
+		text-decoration: underline;
+	}
+</style>
