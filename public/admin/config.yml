@@ -2,7 +2,7 @@ backend:
   name: github
   repo: visualmulia/sudutkreatif-blog
   branch: main
-  base_url: https://sudutkreatif.web.id # Your custom domain to avoid cross-domain browser blocks
+  base_url: https://www.sudutkreatif.web.id # Matching the exact www domain to prevent Decap CMS origin mismatch
   auth_endpoint: api/auth # Redirects to our Vercel Serverless Function
 
 media_folder: "public/images/uploads"
