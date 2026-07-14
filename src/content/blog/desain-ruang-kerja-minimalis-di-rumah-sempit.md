@@ -1,12 +1,14 @@
 ---
-title: "7 Ide Desain Ruang Kerja Minimalis di Rumah Sempit yang Fungsional"
-date: "2026-07-14"
-author: "Admin"
+title: 7 Ide Desain Ruang Kerja Minimalis di Rumah Sempit yang Fungsional
+date: 2026-07-14
+author: Sudut Kreatif
 featured_image: ""
+description: Temukan inspirasi desain ruang kerja minimalis di rumah sempit yang
+  tetap nyaman dan produktif. Tips memaksimalkan area terbatas dengan furnitur
+  multifungsi.
 tags:
-  - "desain ruang kerja minimalis"
-  - "rumah sempit"
-description: "Temukan inspirasi desain ruang kerja minimalis di rumah sempit yang tetap nyaman dan produktif. Tips memaksimalkan area terbatas dengan furnitur multifungsi."
+  - desain ruang kerja minimalis
+  - rumah sempit
 ---
 
 ## Pendahuluan
