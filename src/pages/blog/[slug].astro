@@ -21,7 +21,7 @@ const formatDate = (dateStr: string | Date) => {
 };
 ---
 
-<Layout title={`${post.data.title} - SudutKreatif`} description={post.data.description}>
+<Layout title={`${post.data.title} - SudutKreatif`} description={post.data.description} image={post.data.featured_image}>
 	<article class="post">
 		<header class="post-header">
 			<div class="container post-header-container">
@@ -49,6 +49,24 @@ const formatDate = (dateStr: string | Date) => {
 		<div class="container post-body-container">
 			<div class="post-content">
 				<Content />
+			</div>
+			
+			<div class="post-share">
+				<span class="share-title">Bagikan artikel ini:</span>
+				<div class="share-buttons">
+					<a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.data.title)}%20${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="share-btn whatsapp" title="Bagikan ke WhatsApp">
+						WhatsApp
+					</a>
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Bagikan ke Facebook">
+						Facebook
+					</a>
+					<a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="share-btn twitter" title="Bagikan ke Twitter / X">
+						Twitter
+					</a>
+					<a href={`https://t.me/share/url?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(post.data.title)}`} target="_blank" rel="noopener noreferrer" class="share-btn telegram" title="Bagikan ke Telegram">
+						Telegram
+					</a>
+				</div>
 			</div>
 		</div>
 	</article>
@@ -206,6 +224,54 @@ const formatDate = (dateStr: string | Date) => {
 		background-color: var(--border-color);
 		margin: 3rem 0;
 	}
+
+	.post-share {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border-color);
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.share-title {
+		font-family: var(--font-display);
+		font-size: 0.95rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: var(--text-secondary);
+	}
+
+	.share-buttons {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.share-btn {
+		font-size: 0.9rem;
+		font-weight: 600;
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		color: #FFFFFF;
+		transition: var(--transition);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.share-btn.whatsapp { background-color: #25D366; }
+	.share-btn.whatsapp:hover { background-color: #128C7E; }
+
+	.share-btn.facebook { background-color: #1877F2; }
+	.share-btn.facebook:hover { background-color: #166FE5; }
+
+	.share-btn.twitter { background-color: #1DA1F2; }
+	.share-btn.twitter:hover { background-color: #1A91DA; }
+
+	.share-btn.telegram { background-color: #0088CC; }
+	.share-btn.telegram:hover { background-color: #0077B5; }
 
 	@media (max-width: 768px) {
 		.post-title {
