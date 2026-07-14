@@ -1,0 +1,198 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Generate paths for all blog posts
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Format date helper
+const formatDate = (dateStr: string | Date) => {
+	const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+	return new Date(dateStr).toLocaleDateString('id-ID', options);
+};
+---
+
+<Layout title={`${post.data.title} - SudutKreatif`} description={post.data.description}>
+	<article class="post">
+		<header class="post-header">
+			<div class="container post-header-container">
+				<a href="/" class="back-link">← Kembali ke Home</a>
+				<div class="post-meta">
+					<span>{formatDate(post.data.date)}</span>
+					<span>•</span>
+					<span>Ditulis oleh {post.data.author}</span>
+				</div>
+				<h1 class="post-title">{post.data.title}</h1>
+				<div class="post-tags">
+					{post.data.tags.map((tag) => (
+						<span class="tag">#{tag}</span>
+					))}
+				</div>
+			</div>
+		</header>
+
+		<div class="container post-body-container">
+			<div class="post-content">
+				<Content />
+			</div>
+		</div>
+	</article>
+</Layout>
+
+<style>
+	.post {
+		padding: 4rem 0;
+	}
+
+	.post-header {
+		text-align: center;
+		padding-bottom: 3rem;
+		border-bottom: 1px solid var(--border-color);
+		margin-bottom: 3rem;
+	}
+
+	.post-header-container {
+		max-width: 800px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.back-link {
+		font-size: 0.9rem;
+		color: var(--accent);
+		font-weight: 500;
+		align-self: flex-start;
+	}
+
+	.back-link:hover {
+		color: var(--text-primary);
+	}
+
+	.post-meta {
+		display: flex;
+		gap: 0.5rem;
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		font-weight: 500;
+	}
+
+	.post-title {
+		font-size: 3rem;
+		line-height: 1.2;
+		letter-spacing: -1px;
+		font-weight: 800;
+	}
+
+	.post-tags {
+		display: flex;
+		justify-content: center;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.tag {
+		font-size: 0.85rem;
+		font-weight: 500;
+		color: var(--accent);
+		background-color: var(--accent-light);
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+	}
+
+	.post-body-container {
+		max-width: 800px;
+	}
+
+	/* Typography & Markdown styling */
+	.post-content {
+		font-family: var(--font-sans);
+		font-size: 1.15rem;
+		color: var(--text-primary);
+		line-height: 1.8;
+	}
+
+	.post-content :global(h2) {
+		font-size: 1.8rem;
+		font-weight: 700;
+		margin: 2.5rem 0 1rem 0;
+		letter-spacing: -0.5px;
+	}
+
+	.post-content :global(h3) {
+		font-size: 1.4rem;
+		font-weight: 600;
+		margin: 2rem 0 1rem 0;
+	}
+
+	.post-content :global(p) {
+		margin-bottom: 1.5rem;
+	}
+
+	.post-content :global(ul), .post-content :global(ol) {
+		margin-bottom: 1.5rem;
+		padding-left: 2rem;
+	}
+
+	.post-content :global(li) {
+		margin-bottom: 0.5rem;
+	}
+
+	.post-content :global(blockquote) {
+		border-left: 4px solid var(--accent);
+		padding-left: 1.5rem;
+		margin: 2rem 0;
+		font-style: italic;
+		color: var(--text-secondary);
+	}
+
+	.post-content :global(pre) {
+		background-color: #FAF8F5;
+		border: 1px solid var(--border-color);
+		padding: 1.5rem;
+		border-radius: 8px;
+		overflow-x: auto;
+		margin: 2rem 0;
+	}
+
+	.post-content :global(code) {
+		font-family: monospace;
+		font-size: 0.95rem;
+		background-color: var(--accent-light);
+		color: var(--accent);
+		padding: 0.15rem 0.3rem;
+		border-radius: 4px;
+	}
+
+	.post-content :global(pre code) {
+		background-color: transparent;
+		color: inherit;
+		padding: 0;
+	}
+
+	.post-content :global(hr) {
+		border: none;
+		height: 1px;
+		background-color: var(--border-color);
+		margin: 3rem 0;
+	}
+
+	@media (max-width: 768px) {
+		.post-title {
+			font-size: 2.25rem;
+		}
+		.post-content {
+			font-size: 1.05rem;
+		}
+	}
+</style>

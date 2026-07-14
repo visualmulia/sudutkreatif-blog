@@ -1,0 +1,254 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Fetch and sort posts by date
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => {
+	const dateA = new Date(a.data.date).getTime();
+	const dateB = new Date(b.data.date).getTime();
+	return dateB - dateA;
+});
+
+// Format date helper
+const formatDate = (dateStr: string | Date) => {
+	const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+	return new Date(dateStr).toLocaleDateString('id-ID', options);
+};
+---
+
+<Layout title="SudutKreatif - Inspirasi Workspace & Home Office Setup">
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="container hero-container">
+			<span class="hero-tag">Workspace & Productivity</span>
+			<h1 class="hero-title">Bangun Sudut Kerja Impian Anda.</h1>
+			<p class="hero-subtitle">Temukan panduan penataan meja kerja minimalis, rekomendasi gadget produktivitas, dan review desk setup yang menenangkan serta fungsional.</p>
+		</div>
+	</section>
+
+	<!-- Blog Articles Grid Section -->
+	<section class="articles-section" id="articles">
+		<div class="container">
+			{sortedPosts.length === 0 ? (
+				<div class="no-posts">
+					<h3>Belum ada artikel yang diterbitkan.</h3>
+					<p>Artikel otomatis harian Anda akan muncul di sini segera setelah diterbitkan oleh robot.</p>
+				</div>
+			) : (
+				<div class="grid">
+					{sortedPosts.map((post) => (
+						<article class="card">
+							<a href={`/blog/${post.slug}`} class="card-link">
+								<div class="card-body">
+									<div class="card-meta">
+										<span class="card-date">{formatDate(post.data.date)}</span>
+										<span class="card-dot">•</span>
+										<span class="card-author">{post.data.author}</span>
+									</div>
+									<h2 class="card-title">{post.data.title}</h2>
+									<p class="card-desc">
+										{post.data.description || post.body.slice(0, 140) + '...'}
+									</p>
+									<div class="card-tags">
+										{post.data.tags.map((tag) => (
+											<span class="tag">#{tag}</span>
+										))}
+									</div>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section class="about-section" id="about">
+		<div class="container about-container">
+			<div class="about-card">
+				<h2>Tentang SudutKreatif</h2>
+				<p>Kami percaya bahwa ruang kerja yang rapi, indah, dan fungsional adalah kunci kreativitas dan produktivitas maksimal. SudutKreatif menyajikan inspirasi, tips, dan kurasi setup meja kerja minimalis modern bagi desainer, programmer, penulis, dan profesional kreatif lainnya.</p>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	/* Hero Section */
+	.hero {
+		padding: 7rem 0 5rem 0;
+		text-align: center;
+	}
+
+	.hero-container {
+		max-width: 800px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.hero-tag {
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		color: var(--accent);
+		background-color: var(--accent-light);
+		padding: 0.3rem 0.8rem;
+		border-radius: 20px;
+	}
+
+	.hero-title {
+		font-size: 3.5rem;
+		font-weight: 800;
+		letter-spacing: -1.5px;
+		line-height: 1.15;
+	}
+
+	.hero-subtitle {
+		font-size: 1.2rem;
+		color: var(--text-secondary);
+		max-width: 650px;
+		line-height: 1.6;
+	}
+
+	/* Articles Grid */
+	.articles-section {
+		padding: 3rem 0;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 2.5rem;
+	}
+
+	.card {
+		background-color: var(--card-bg);
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		overflow: hidden;
+		transition: var(--transition);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+		border-color: #D5CFCE;
+	}
+
+	.card-body {
+		padding: 2.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		height: 100%;
+	}
+
+	.card-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		font-weight: 500;
+	}
+
+	.card-dot {
+		font-size: 0.6rem;
+	}
+
+	.card-title {
+		font-size: 1.4rem;
+		font-weight: 700;
+		line-height: 1.3;
+		transition: var(--transition);
+	}
+
+	.card:hover .card-title {
+		color: var(--accent);
+	}
+
+	.card-desc {
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+		padding-top: 0.5rem;
+	}
+
+	.tag {
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: var(--accent);
+		background-color: var(--accent-light);
+		padding: 0.15rem 0.5rem;
+		border-radius: 4px;
+	}
+
+	.no-posts {
+		text-align: center;
+		padding: 6rem 0;
+		border: 1px dashed var(--border-color);
+		background-color: #FFFFFF;
+		border-radius: 8px;
+		color: var(--text-secondary);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	/* About Section */
+	.about-section {
+		padding: 5rem 0;
+	}
+
+	.about-card {
+		background-color: #FFFFFF;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		padding: 3.5rem;
+		text-align: center;
+		max-width: 800px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.about-card h2 {
+		font-size: 2rem;
+		letter-spacing: -0.5px;
+	}
+
+	.about-card p {
+		font-size: 1.05rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+	}
+
+	@media (max-width: 768px) {
+		.hero-title {
+			font-size: 2.5rem;
+		}
+		.about-card {
+			padding: 2rem;
+		}
+	}
+</style>
