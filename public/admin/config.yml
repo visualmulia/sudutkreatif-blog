@@ -2,7 +2,7 @@ backend:
   name: github
   repo: visualmulia/sudutkreatif-blog
   branch: main
-  base_url: https://sudutkreatif-blog.vercel.app # Your custom Vercel app domain
+  base_url: https://sudutkreatif.web.id # Your custom domain to avoid cross-domain browser blocks
   auth_endpoint: api/auth # Redirects to our Vercel Serverless Function
 
 media_folder: "public/images/uploads"
