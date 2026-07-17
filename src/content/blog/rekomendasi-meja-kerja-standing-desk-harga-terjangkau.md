@@ -2,7 +2,7 @@
 title: 10 Rekomendasi Meja Kerja Standing Desk Harga Terjangkau 2026
 date: 2026-07-17
 author: Co Admin Sudut Kreatif
-featured_image: ""
+featured_image: /images/uploads/02.png
 description: Cari standing desk murah berkualitas? Simak 10 rekomendasi meja
   kerja adjustable harga terjangkau, lengkap dengan tabel perbandingan dan tips
   memilih.
