@@ -257,6 +257,43 @@ const formatDate = (dateStr: string | Date) => {
 		margin: 3rem 0;
 	}
 
+	.post-content :global(table) {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		border-collapse: collapse;
+		margin: 2.5rem 0;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		background-color: var(--card-bg);
+	}
+
+	.post-content :global(th),
+	.post-content :global(td) {
+		padding: 0.75rem 1rem;
+		text-align: left;
+		border-bottom: 1px solid var(--border-color);
+		font-size: 0.95rem;
+	}
+
+	.post-content :global(th) {
+		background-color: var(--accent-light);
+		color: var(--text-primary);
+		font-family: var(--font-display);
+		font-weight: 700;
+		border-bottom: 2px solid var(--border-color);
+		min-width: 120px;
+	}
+
+	.post-content :global(tr:last-child td) {
+		border-bottom: none;
+	}
+
+	.post-content :global(tr:nth-child(even)) {
+		background-color: rgba(0, 0, 0, 0.015);
+	}
+
 	.post-share {
 		margin-top: 4rem;
 		padding-top: 2rem;
