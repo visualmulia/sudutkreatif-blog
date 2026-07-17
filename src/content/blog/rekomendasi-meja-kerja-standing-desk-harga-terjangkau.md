@@ -58,6 +58,8 @@ DOLF L-Shape dari AFW Indonesia dijual Rp5.296.000 (normal Rp7.999.000). Meja be
 
 ### 7. Standing Desk Converter
 
+![](https://image.springbeetle.com/cdn-cgi/image/dpr=1,format=webp/https://staticprod.site.flexispot.com/flexispot/catalog/product/e/l/electric_height_adjustable_standing_desk_ec1-55-1.jpg)
+
 Jika budget terbatas, standing desk converter bisa menjadi solusi. Flexispot EC1 converter misalnya, hanya $170 (Rp2,5 jutaan). Alat ini diletakkan di atas meja biasa dan bisa diatur ketinggiannya secara manual atau elektrik.
 
 ### 8. IKEA BEKANT
@@ -68,9 +70,13 @@ IKEA BEKANT adalah standing desk elektrik dengan harga sekitar Rp4,5 jutaan. Mem
 
 ### 9. VariDesk ProPlus 36
 
+![](https://www.vari.com/dw/image/v2/BDFT_PRD/on/demandware.static/-/Sites-vari-master-catalog/default/dwe7f95fef/images/large/DC-PP36/42431-black/vari-desktop-converter_42431_black_raised.jpg?sw=1200&sh=1200)
+
 VariDesk ProPlus 36 adalah standing desk converter manual dengan harga sekitar Rp3 jutaan. Kapasitas angkat 15 kg, cukup untuk laptop dan satu monitor. Mudah dipasang dan dibongkar.
 
 ### 10. Autonomous SmartDesk Core
+
+![](https://scontent.fdps2-1.fna.fbcdn.net/v/t39.30808-6/481902721_4061766497386533_6395129729154287288_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=104&ccb=1-7&_nc_sid=0b6b33&_nc_eui2=AeFvPXtHpPau84o042_rYO6eEbbnZR6_mqcRtudlHr-ap8jqdEz7ZdnqavxJwQZSEZI&_nc_ohc=EJTzgxR93AAQ7kNvwFMqyu0&_nc_oc=Ado_fwFfnyWNBvGDIWuHrtBC8s1J5teacEOKXfmIs1nYlnhPdjt_o-ouMqL5AVOkVd6Vhb8vkke8b66H6787RKF0&_nc_zt=23&_nc_ht=scontent.fdps2-1.fna&_nc_gid=Ko7TUmE0Bs4vr05-SbJ-cA&_nc_ss=7b2a8&oh=00_AQAIOLOLoLZQSthUwsueHEkklVRj8PiepmhDrSlcwRmXLg&oe=6A6029AE)
 
 Autonomous SmartDesk Core dibanderol sekitar $299 (Rp4,5 jutaan). Dual motor, kapasitas 120 kg, dan ukuran meja 120x70 cm. Garansi 5 tahun.
 
