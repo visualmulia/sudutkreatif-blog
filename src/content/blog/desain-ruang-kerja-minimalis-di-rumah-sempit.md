@@ -1,12 +1,14 @@
 ---
 title: "Desain Ruang Kerja Minimalis di Rumah Sempit: 7 Ide Efektif & Hemat Tempat"
-date: "2026-07-17"
-author: "Admin"
-featured_image: ""
+date: 2026-07-17
+author: Admin
+featured_image: /images/uploads/01a-3-.png
+description: Temukan 7 ide desain ruang kerja minimalis di rumah sempit yang
+  nyaman dan produktif. Dilengkapi tips memilih meja, pencahayaan, dan tabel
+  perbandingan furnitur.
 tags:
-  - "desain ruang kerja minimalis"
-  - "ruang kerja rumah sempit"
-description: "Temukan 7 ide desain ruang kerja minimalis di rumah sempit yang nyaman dan produktif. Dilengkapi tips memilih meja, pencahayaan, dan tabel perbandingan furnitur."
+  - desain ruang kerja minimalis
+  - ruang kerja rumah sempit
 ---
 
 Bekerja dari rumah (WFH) di rumah sempit bukanlah halangan untuk memiliki ruang kerja yang nyaman dan produktif. Kuncinya terletak pada desain ruang kerja minimalis yang cerdas dalam memanfaatkan setiap sudut. Artikel ini akan memandu Anda memilih konsep, furnitur, dan tata letak terbaik untuk menciptakan workspace impian meski di lahan terbatas.
