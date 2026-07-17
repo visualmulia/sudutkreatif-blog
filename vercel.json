@@ -3,6 +3,7 @@
   "routes": [
     { "src": "/api/auth", "dest": "/api/auth.js" },
     { "src": "/api/callback", "dest": "/api/callback.js" },
+    { "src": "/sitemap.xml", "dest": "/sitemap-index.xml" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
