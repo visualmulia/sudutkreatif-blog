@@ -10,7 +10,7 @@ interface Props {
 const { title, description = "Inspirasi desain ruang kerja, home office setup, dan gadget produktivitas untuk profesional kreatif.", image } = Astro.props;
 
 // Determine absolute canonical URL and image URL for metadata
-const canonicalURL = Astro.url.href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 const ogImage = image 
 	? (image.startsWith('http') ? image : new URL(image, Astro.url.origin).href)
 	: new URL('/favicon.svg', Astro.url.origin).href;
@@ -27,6 +27,7 @@ const ogImage = image
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
