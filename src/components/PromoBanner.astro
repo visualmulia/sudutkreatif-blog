@@ -1,0 +1,549 @@
+---
+// PromoBanner.astro - Premium Showcase Banner with Komikoe Interface Mockup
+---
+
+<aside class="promo-banner-section" aria-label="Promosi Komikoe">
+	<div class="container">
+		<div class="promo-showcase-card">
+			<!-- Ambient Lighting Effects -->
+			<div class="ambient-glow glow-red"></div>
+			<div class="ambient-glow glow-purple"></div>
+			<div class="ambient-glow glow-amber"></div>
+
+			<!-- Left Column: Copywriting & CTA -->
+			<div class="showcase-content">
+				<div class="brand-badge-wrapper">
+					<span class="brand-pill">
+						<span class="live-dot"></span>
+						KOMIKOE.WEB.ID
+					</span>
+					<span class="tag-version">PORTAL BACA KOMIK DIGITAL</span>
+				</div>
+
+				<h3 class="showcase-title">
+					Surganya Pecinta Komik: Ribuan <span class="text-gradient">Manga, US & Eropa</span> Gratis!
+				</h3>
+
+				<p class="showcase-desc">
+					Temukan kembali keseruan membaca komik favorit Anda mulai dari <em>Kungfu Boy, Tokyo Ghoul, Shaman King</em>, hingga superhero <em>Marvel & DC</em> dengan tampilan rak digital yang rapi dan nyaman.
+				</p>
+
+				<ul class="feature-checklist">
+					<li>
+						<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						<span>Koleksi Lengkap Manga Jepang & US Comics</span>
+					</li>
+					<li>
+						<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						<span>Tampilan Rak Komik Modern & Sangat Cepat</span>
+					</li>
+					<li>
+						<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						<span>100% Gratis Langsung Baca di HP atau Laptop</span>
+					</li>
+				</ul>
+
+				<div class="action-row">
+					<a 
+						href="https://komikoe.web.id" 
+						target="_blank" 
+						rel="noopener noreferrer" 
+						class="cta-primary-btn"
+						title="Kunjungi Komikoe.web.id - Baca Komik Gratis"
+					>
+						<span class="btn-text">Buka Komikoe Sekarang</span>
+						<svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="5" y1="12" x2="19" y2="12"></line>
+							<polyline points="12 5 19 12 12 19"></polyline>
+						</svg>
+						<div class="btn-shimmer"></div>
+					</a>
+					<span class="sub-guarantee">✨ Tanpa perlu login, langsung klik & baca</span>
+				</div>
+			</div>
+
+			<!-- Right Column: 3D App Preview Window -->
+			<div class="showcase-preview-column">
+				<a 
+					href="https://komikoe.web.id" 
+					target="_blank" 
+					rel="noopener noreferrer" 
+					class="device-frame-link"
+					tabindex="-1"
+					aria-hidden="true"
+				>
+					<div class="device-mockup">
+						<!-- Browser Top Bar -->
+						<div class="mockup-header">
+							<div class="window-controls">
+								<span class="dot red"></span>
+								<span class="dot yellow"></span>
+								<span class="dot green"></span>
+							</div>
+							<div class="url-bar">
+								<svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+								<span>komikoe.web.id</span>
+							</div>
+							<div class="window-spacer"></div>
+						</div>
+
+						<!-- Screenshot Container with Glass Sheen -->
+						<div class="mockup-screen">
+							<img 
+								src="/images/komikoe-preview.png" 
+								alt="Tampilan Rak Koleksi Komik Manga dan US Superhero di Komikoe.web.id"
+								width="800"
+								height="450"
+								loading="lazy"
+								class="mockup-img"
+							/>
+							<div class="screen-overlay-glare"></div>
+						</div>
+
+						<!-- Floating Badges over Mockup -->
+						<div class="floating-badge badge-top">
+							<span class="fire-icon">🔥</span>
+							<span>Koleksi Terlengkap</span>
+						</div>
+						<div class="floating-badge badge-bottom">
+							<span class="star-icon">⭐</span>
+							<span>Gratis Akses</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</aside>
+
+<style>
+	.promo-banner-section {
+		padding: 3.5rem 1.5rem 2rem 1.5rem;
+		position: relative;
+	}
+
+	.promo-showcase-card {
+		position: relative;
+		overflow: hidden;
+		background: radial-gradient(circle at 80% 20%, #1E1B4B 0%, #0F172A 40%, #080D1A 100%);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 1.75rem;
+		padding: 3rem;
+		display: grid;
+		grid-template-columns: 1.15fr 1fr;
+		align-items: center;
+		gap: 3.5rem;
+		box-shadow: 0 24px 50px -12px rgba(8, 13, 26, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+	}
+
+	.promo-showcase-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 32px 64px -16px rgba(8, 13, 26, 0.65), 0 0 35px rgba(239, 68, 68, 0.2);
+	}
+
+	/* Ambient Glowing Background Elements */
+	.ambient-glow {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(75px);
+		pointer-events: none;
+		opacity: 0.22;
+		z-index: 1;
+	}
+
+	.glow-red {
+		width: 320px;
+		height: 320px;
+		background: #EF4444;
+		top: -60px;
+		right: 15%;
+		animation: pulse-glow 7s ease-in-out infinite alternate;
+	}
+
+	.glow-purple {
+		width: 280px;
+		height: 280px;
+		background: #8B5CF6;
+		bottom: -60px;
+		left: 10%;
+		animation: pulse-glow 9s ease-in-out infinite alternate-reverse;
+	}
+
+	.glow-amber {
+		width: 220px;
+		height: 220px;
+		background: #F59E0B;
+		bottom: 10%;
+		right: -30px;
+		animation: pulse-glow 6s ease-in-out infinite alternate;
+	}
+
+	@keyframes pulse-glow {
+		0% { transform: scale(1); opacity: 0.18; }
+		100% { transform: scale(1.3); opacity: 0.32; }
+	}
+
+	/* Content Column */
+	.showcase-content {
+		position: relative;
+		z-index: 2;
+	}
+
+	.brand-badge-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.brand-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: rgba(239, 68, 68, 0.18);
+		border: 1px solid rgba(239, 68, 68, 0.45);
+		color: #FCA5A5;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.75px;
+		padding: 0.3rem 0.75rem;
+		border-radius: 9999px;
+	}
+
+	.live-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background-color: #EF4444;
+		box-shadow: 0 0 8px #EF4444;
+		animation: blink-dot 1.5s infinite ease-in-out;
+	}
+
+	@keyframes blink-dot {
+		0%, 100% { opacity: 1; transform: scale(1); }
+		50% { opacity: 0.35; transform: scale(0.8); }
+	}
+
+	.tag-version {
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: #94A3B8;
+		letter-spacing: 0.5px;
+	}
+
+	.showcase-title {
+		font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+		font-weight: 800;
+		color: #FFFFFF;
+		line-height: 1.3;
+		margin-bottom: 0.85rem;
+		letter-spacing: -0.4px;
+	}
+
+	.text-gradient {
+		background: linear-gradient(135deg, #FF6B6B 0%, #FFA07A 50%, #FFD166 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-weight: 900;
+	}
+
+	.showcase-desc {
+		font-size: 0.96rem;
+		color: #94A3B8;
+		line-height: 1.6;
+		margin-bottom: 1.35rem;
+	}
+
+	.showcase-desc em {
+		color: #CBD5E1;
+		font-style: normal;
+		font-weight: 600;
+	}
+
+	.feature-checklist {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.75rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+	}
+
+	.feature-checklist li {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		font-size: 0.88rem;
+		font-weight: 500;
+		color: #E2E8F0;
+	}
+
+	.check-icon {
+		color: #10B981;
+		background: rgba(16, 185, 129, 0.15);
+		border-radius: 50%;
+		padding: 2px;
+		flex-shrink: 0;
+	}
+
+	.action-row {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.65rem;
+	}
+
+	.cta-primary-btn {
+		position: relative;
+		overflow: hidden;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+		background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #B91C1C 100%);
+		color: #FFFFFF;
+		font-weight: 800;
+		font-size: 1rem;
+		padding: 0.95rem 1.85rem;
+		border-radius: 0.85rem;
+		text-decoration: none;
+		box-shadow: 0 10px 24px -4px rgba(239, 68, 68, 0.45);
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.cta-primary-btn:hover {
+		transform: translateY(-2px) scale(1.02);
+		box-shadow: 0 14px 32px -4px rgba(239, 68, 68, 0.65);
+		color: #FFFFFF;
+	}
+
+	.btn-arrow {
+		transition: transform 0.25s ease;
+	}
+
+	.cta-primary-btn:hover .btn-arrow {
+		transform: translateX(4px);
+	}
+
+	.btn-shimmer {
+		position: absolute;
+		top: 0;
+		left: -120%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+		animation: shimmer-sweep 3.5s infinite;
+	}
+
+	@keyframes shimmer-sweep {
+		0% { left: -120%; }
+		30%, 100% { left: 120%; }
+	}
+
+	.sub-guarantee {
+		font-size: 0.8rem;
+		color: #64748B;
+		font-weight: 500;
+	}
+
+	/* Mockup Preview Column */
+	.showcase-preview-column {
+		position: relative;
+		z-index: 2;
+		perspective: 1200px;
+	}
+
+	.device-frame-link {
+		display: block;
+		text-decoration: none;
+	}
+
+	.device-mockup {
+		position: relative;
+		border-radius: 1rem;
+		background: #1E293B;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(139, 92, 246, 0.15);
+		transform: rotateY(-6deg) rotateX(3deg);
+		transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
+	}
+
+	.promo-showcase-card:hover .device-mockup {
+		transform: rotateY(-1deg) rotateX(1deg) scale(1.02);
+		box-shadow: 0 28px 56px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(239, 68, 68, 0.25);
+	}
+
+	.mockup-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.6rem 0.85rem;
+		background: #0F172A;
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.window-controls {
+		display: flex;
+		gap: 0.35rem;
+	}
+
+	.dot {
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+	}
+
+	.dot.red { background: #EF4444; }
+	.dot.yellow { background: #F59E0B; }
+	.dot.green { background: #10B981; }
+
+	.url-bar {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		background: rgba(255, 255, 255, 0.06);
+		padding: 0.2rem 0.85rem;
+		border-radius: 0.35rem;
+		font-size: 0.72rem;
+		color: #94A3B8;
+		border: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.lock-icon {
+		color: #10B981;
+	}
+
+	.window-spacer {
+		width: 35px;
+	}
+
+	.mockup-screen {
+		position: relative;
+		overflow: hidden;
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		line-height: 0;
+	}
+
+	.mockup-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+
+	.promo-showcase-card:hover .mockup-img {
+		transform: scale(1.02);
+	}
+
+	.screen-overlay-glare {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+		pointer-events: none;
+	}
+
+	/* Floating Badges Over Mockup */
+	.floating-badge {
+		position: absolute;
+		z-index: 3;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.4rem 0.75rem;
+		border-radius: 0.65rem;
+		font-size: 0.76rem;
+		font-weight: 700;
+		color: #FFFFFF;
+		background: rgba(15, 23, 42, 0.85);
+		backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+		animation: float-badge 4s ease-in-out infinite alternate;
+	}
+
+	.badge-top {
+		top: -12px;
+		right: -12px;
+		border-color: rgba(239, 68, 68, 0.4);
+	}
+
+	.badge-bottom {
+		bottom: -12px;
+		left: -12px;
+		border-color: rgba(16, 185, 129, 0.4);
+		animation-delay: -2s;
+	}
+
+	@keyframes float-badge {
+		0% { transform: translateY(0); }
+		100% { transform: translateY(-6px); }
+	}
+
+	/* Responsive Design */
+	@media (max-width: 960px) {
+		.promo-showcase-card {
+			grid-template-columns: 1fr;
+			padding: 2.25rem 1.75rem;
+			gap: 2.5rem;
+		}
+
+		.device-mockup {
+			transform: none !important;
+			max-width: 580px;
+			margin: 0 auto;
+		}
+
+		.action-row {
+			align-items: stretch;
+		}
+
+		.cta-primary-btn {
+			width: 100%;
+		}
+
+		.sub-guarantee {
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.promo-banner-section {
+			padding: 2rem 1rem 1rem 1rem;
+		}
+
+		.promo-showcase-card {
+			border-radius: 1.25rem;
+			padding: 1.65rem 1.25rem;
+		}
+
+		.showcase-title {
+			font-size: 1.35rem;
+		}
+
+		.showcase-desc {
+			font-size: 0.88rem;
+		}
+
+		.floating-badge {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ambient-glow, .live-dot, .btn-shimmer, .floating-badge {
+			animation: none !important;
+		}
+		.promo-showcase-card, .device-mockup, .mockup-img, .cta-primary-btn {
+			transition: none !important;
+		}
+	}
+</style>
