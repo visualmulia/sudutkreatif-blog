@@ -1,0 +1,443 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Fetch and sort posts by date
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => {
+	const dateA = new Date(a.data.date).getTime();
+	const dateB = new Date(b.data.date).getTime();
+	return dateB - dateA;
+});
+
+// Format date helper
+const formatDate = (dateStr: string | Date) => {
+	const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+	return new Date(dateStr).toLocaleDateString('id-ID', options);
+};
+---
+
+<Layout title="Cari Artikel - Temukan Panduan & Informasi Lengkap" description="Cari dan temukan artikel, panduan rute perjalanan, tips wisata, dan rekomendasi terbaik di blog kami secara instan.">
+	<div class="search-page-container">
+		<header class="search-header">
+			<span class="search-badge">PENCARIAN ARTIKEL</span>
+			<h1 class="search-title">Temukan yang Anda Cari</h1>
+			<p class="search-subtitle">Ketik kata kunci, kota, atau topik untuk menemukan panduan yang Anda butuhkan.</p>
+
+			<div class="search-box-wrapper">
+				<div class="search-input-group">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-input-icon">
+						<circle cx="11" cy="11" r="8"></circle>
+						<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+					</svg>
+					<input 
+						type="search" 
+						id="search-input" 
+						class="search-input" 
+						placeholder="Ketik topik atau kata kunci pencarian..." 
+						autocomplete="off"
+						autofocus
+					/>
+					<button id="clear-search-btn" class="clear-btn" aria-label="Hapus pencarian" style="display: none;">
+						&times;
+					</button>
+				</div>
+			</div>
+
+			<div class="search-status-bar">
+				<span id="search-status-text">Menampilkan semua artikel terbaru</span>
+				<span id="search-count" class="search-count-pill">{sortedPosts.length} artikel</span>
+			</div>
+		</header>
+
+		<!-- Search Results Grid -->
+		<section class="results-section">
+			<div id="results-grid" class="grid">
+				{sortedPosts.map((post) => (
+					<article class="card search-card" data-slug={post.slug} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags ? post.data.tags.join(' ').toLowerCase() : ''} data-desc={(post.data.description || '').toLowerCase()}>
+						<a href={`/blog/${post.slug}`} class="card-link">
+							<div class="card-body">
+								<div class="card-meta">
+									<span class="card-date">{formatDate(post.data.date)}</span>
+									<span class="card-dot">•</span>
+									<span class="card-author">{post.data.author || 'Admin'}</span>
+								</div>
+								<h2 class="card-title">{post.data.title}</h2>
+								<p class="card-desc">
+									{post.data.description || (post.body ? post.body.slice(0, 140) + '...' : '')}
+								</p>
+								<div class="card-tags">
+									{post.data.tags && post.data.tags.map((tag: string) => (
+										<span class="tag">#{tag}</span>
+									))}
+								</div>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+
+			<div id="no-results" class="no-results" style="display: none;">
+				<div class="no-results-icon">🔍</div>
+				<h3>Tidak Ditemukan Hasil</h3>
+				<p>Maaf, tidak ada artikel yang cocok dengan kata kunci "<span id="missing-keyword"></span>". Coba gunakan kata kunci lain yang lebih umum.</p>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<script>
+	const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+	const clearBtn = document.getElementById('clear-search-btn') as HTMLButtonElement | null;
+	const statusText = document.getElementById('search-status-text');
+	const countPill = document.getElementById('search-count');
+	const resultsGrid = document.getElementById('results-grid');
+	const noResults = document.getElementById('no-results');
+	const missingKeyword = document.getElementById('missing-keyword');
+	const cards = document.querySelectorAll('.search-card');
+
+	function performSearch(query: string) {
+		const cleanQuery = query.trim().toLowerCase();
+
+		if (clearBtn) {
+			clearBtn.style.display = cleanQuery ? 'block' : 'none';
+		}
+
+		let visibleCount = 0;
+
+		cards.forEach((cardEl) => {
+			const card = cardEl as HTMLElement;
+			const title = card.getAttribute('data-title') || '';
+			const tags = card.getAttribute('data-tags') || '';
+			const desc = card.getAttribute('data-desc') || '';
+
+			if (!cleanQuery) {
+				card.style.display = 'block';
+				visibleCount++;
+			} else {
+				const isMatch = title.includes(cleanQuery) || tags.includes(cleanQuery) || desc.includes(cleanQuery);
+				if (isMatch) {
+					card.style.display = 'block';
+					visibleCount++;
+				} else {
+					card.style.display = 'none';
+				}
+			}
+		});
+
+		if (countPill) {
+			countPill.textContent = `${visibleCount} artikel`;
+		}
+
+		if (statusText) {
+			if (!cleanQuery) {
+				statusText.textContent = 'Menampilkan semua artikel terbaru';
+			} else {
+				statusText.textContent = `Hasil pencarian untuk "${cleanQuery}"`;
+			}
+		}
+
+		if (noResults && resultsGrid) {
+			if (visibleCount === 0) {
+				resultsGrid.style.display = 'none';
+				noResults.style.display = 'block';
+				if (missingKeyword) missingKeyword.textContent = cleanQuery;
+			} else {
+				resultsGrid.style.display = 'grid';
+				noResults.style.display = 'none';
+			}
+		}
+
+		// Update URL query parameter
+		const newUrl = new URL(window.location.href);
+		if (cleanQuery) {
+			newUrl.searchParams.set('q', cleanQuery);
+		} else {
+			newUrl.searchParams.delete('q');
+		}
+		window.history.replaceState({}, '', newUrl.toString());
+	}
+
+	if (searchInput) {
+		searchInput.addEventListener('input', (e) => {
+			const target = e.target as HTMLInputElement;
+			performSearch(target.value);
+		});
+
+		// Check URL parameter on initial load
+		const params = new URLSearchParams(window.location.search);
+		const initialQuery = params.get('q');
+		if (initialQuery) {
+			searchInput.value = initialQuery;
+			performSearch(initialQuery);
+		}
+	}
+
+	if (clearBtn && searchInput) {
+		clearBtn.addEventListener('click', () => {
+			searchInput.value = '';
+			searchInput.focus();
+			performSearch('');
+		});
+	}
+</script>
+
+<style>
+	.search-page-container {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 3rem 1.5rem 6rem 1.5rem;
+	}
+
+	.search-header {
+		text-align: center;
+		max-width: 680px;
+		margin: 0 auto 3rem auto;
+	}
+
+	.search-badge {
+		display: inline-block;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: var(--accent);
+		background-color: var(--accent-light, rgba(0, 0, 0, 0.04));
+		padding: 0.35rem 0.85rem;
+		border-radius: 9999px;
+		margin-bottom: 1rem;
+		border: 1px solid var(--border-color);
+	}
+
+	.search-title {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		font-weight: 800;
+		color: var(--text-primary);
+		line-height: 1.2;
+		margin-bottom: 0.75rem;
+	}
+
+	.search-subtitle {
+		font-size: 1.05rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin-bottom: 2rem;
+	}
+
+	.search-box-wrapper {
+		margin-bottom: 1.5rem;
+	}
+
+	.search-input-group {
+		position: relative;
+		display: flex;
+		align-items: center;
+		background: var(--card-bg);
+		border: 2px solid var(--border-color);
+		border-radius: 1rem;
+		box-shadow: var(--shadow-md);
+		transition: var(--transition);
+	}
+
+	.search-input-group:focus-within {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 4px var(--accent-light, rgba(0, 0, 0, 0.05)), var(--shadow-md);
+	}
+
+	.search-input-icon {
+		position: absolute;
+		left: 1.25rem;
+		color: var(--text-secondary);
+		pointer-events: none;
+	}
+
+	.search-input {
+		width: 100%;
+		padding: 1rem 3rem 1rem 3.25rem;
+		font-family: var(--font-sans);
+		font-size: 1.05rem;
+		color: var(--text-primary);
+		background: transparent;
+		border: none;
+		outline: none;
+	}
+
+	.clear-btn {
+		position: absolute;
+		right: 1rem;
+		background: transparent;
+		border: none;
+		font-size: 1.5rem;
+		color: var(--text-secondary);
+		cursor: pointer;
+		padding: 0.25rem 0.5rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+		transition: var(--transition);
+	}
+
+	.clear-btn:hover {
+		color: var(--text-primary);
+	}
+
+	.search-status-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		padding: 0 0.5rem;
+	}
+
+	.search-count-pill {
+		background: var(--card-bg);
+		border: 1px solid var(--border-color);
+		padding: 0.2rem 0.65rem;
+		border-radius: 9999px;
+		font-weight: 600;
+		color: var(--text-primary);
+	}
+
+	/* Results Grid */
+	.results-section {
+		margin-top: 1rem;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 2rem;
+	}
+
+	.card {
+		background-color: var(--card-bg);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+		transition: var(--transition);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent);
+	}
+
+	.card-link {
+		color: inherit;
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.card-body {
+		padding: 1.75rem;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	.card-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 0.75rem;
+	}
+
+	.card-dot {
+		opacity: 0.5;
+	}
+
+	.card-title {
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		line-height: 1.4;
+		margin-bottom: 0.75rem;
+		transition: var(--transition);
+	}
+
+	.card:hover .card-title {
+		color: var(--accent);
+	}
+
+	.card-desc {
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin-bottom: 1.25rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		flex-grow: 1;
+	}
+
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+	}
+
+	.tag {
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: var(--accent);
+		background-color: var(--accent-light, rgba(0, 0, 0, 0.03));
+		padding: 0.25rem 0.6rem;
+		border-radius: 0.375rem;
+	}
+
+	/* No Results State */
+	.no-results {
+		text-align: center;
+		padding: 4rem 1.5rem;
+		background: var(--card-bg);
+		border-radius: 1rem;
+		border: 1px dashed var(--border-color);
+		max-width: 600px;
+		margin: 2rem auto;
+	}
+
+	.no-results-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.no-results h3 {
+		font-size: 1.35rem;
+		color: var(--text-primary);
+		margin-bottom: 0.5rem;
+	}
+
+	.no-results p {
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	#missing-keyword {
+		font-weight: 700;
+		color: var(--accent);
+	}
+
+	@media (max-width: 640px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+
+		.search-page-container {
+			padding: 2rem 1rem 4rem 1rem;
+		}
+	}
+</style>

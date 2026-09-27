@@ -53,6 +53,10 @@ const ogImage = image
 				<nav class="nav">
 					<a href="/" class="nav-link">Home</a>
 					<a href="/#about" class="nav-link">Tentang</a>
+					<a href="/search" class="nav-link search-nav-btn" title="Cari Artikel">
+						<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+						<span>Cari</span>
+					</a>
 				</nav>
 			</div>
 		</header>
@@ -127,6 +131,24 @@ const ogImage = image
 
 	.nav-link:hover {
 		color: var(--text-primary);
+	}
+
+	.search-nav-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.35rem 0.75rem;
+		border-radius: 9999px;
+		background: rgba(0, 0, 0, 0.03);
+		border: 1px solid var(--border-color);
+		transition: var(--transition);
+	}
+
+	.search-nav-btn:hover {
+		background: var(--card-bg);
+		border-color: var(--accent);
+		color: var(--accent);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.footer-links {
