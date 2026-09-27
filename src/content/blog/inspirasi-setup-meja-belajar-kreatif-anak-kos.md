@@ -1,12 +1,15 @@
 ---
-title: "Inspirasi Setup Meja Belajar Kreatif Anak Kos: Estetis, Fungsional, dan Hemat Biaya"
-date: "2026-08-11"
-author: "Admin"
-featured_image: ""
+title: "Inspirasi Setup Meja Belajar Kreatif Anak Kos: Estetis, Fungsional, dan
+  Hemat Biaya"
+date: 2026-08-11
+author: Admin
+featured_image: /images/uploads/inspirasi-setup-meja-belajar-anak-kost.jpg
+description: Temukan inspirasi setup meja belajar kreatif anak kos yang estetis
+  dan fungsional. Tips dekorasi, tata letak, dan rekomendasi produk untuk kamar
+  sempit.
 tags:
-  - "setup meja belajar"
-  - "anak kos"
-description: "Temukan inspirasi setup meja belajar kreatif anak kos yang estetis dan fungsional. Tips dekorasi, tata letak, dan rekomendasi produk untuk kamar sempit."
+  - setup meja belajar
+  - anak kos
 ---
 
 ## Jawaban Singkat: Kunci Setup Meja Belajar Anak Kos yang Ideal
