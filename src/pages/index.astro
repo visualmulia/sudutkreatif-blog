@@ -70,6 +70,7 @@ const formatDate = (dateStr: string | Date) => {
 			<div class="about-card">
 				<h2>Tentang SudutKreatif</h2>
 				<p>Kami percaya bahwa ruang kerja yang rapi, indah, dan fungsional adalah kunci kreativitas dan produktivitas maksimal. SudutKreatif menyajikan inspirasi, tips, dan kurasi setup meja kerja minimalis modern bagi desainer, programmer, penulis, dan profesional kreatif lainnya.</p>
+				<a href="/about" class="about-more-link">Pelajari Visi, Misi & Standar Editorial Kami &rarr;</a>
 			</div>
 		</div>
 	</section>
@@ -261,6 +262,21 @@ const formatDate = (dateStr: string | Date) => {
 		font-size: 1.05rem;
 		color: var(--text-secondary);
 		line-height: 1.7;
+	}
+
+	.about-more-link {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--accent);
+		display: inline-flex;
+		align-items: center;
+		margin-top: 0.5rem;
+		transition: var(--transition);
+	}
+
+	.about-more-link:hover {
+		color: var(--accent-hover);
+		transform: translateX(4px);
 	}
 
 	@media (max-width: 768px) {
